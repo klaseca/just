@@ -1,4 +1,4 @@
-const cjs = require('@rollup/plugin-commonjs');
+const {defineConfig} = require('rollup');
 const {resolve} = require('path');
 
 /**
@@ -6,12 +6,13 @@ const {resolve} = require('path');
  * @param {string} path
  */
 module.exports = function createRollupConfig(path) {
-  return {
-    input: resolve(path, './index.cjs'),
+  return defineConfig({
+    input: resolve(path, './index.mjs'),
     output: {
-      file: resolve(path, './index.mjs'),
-      format: 'esm',
+      file: resolve(path, './index.cjs'),
+      format: 'cjs',
+      exports: 'default',
+      outro: 'module.exports.default = module.exports;',
     },
-    plugins: [cjs()],
-  };
+  });
 };

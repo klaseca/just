@@ -1,5 +1,3 @@
-var arrayOrderBy = orderBy;
-
 function getValueFromParam(param, item) {
   if (typeof param.property === 'function') {
     return param.property(item);
@@ -62,4 +60,4 @@ function orderBy(arr, params) {
   return copied.sort(createSortFn(params));
 }
 
-export {arrayOrderBy as default};
+export {orderBy as default};

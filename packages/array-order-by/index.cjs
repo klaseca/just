@@ -1,4 +1,4 @@
-module.exports = orderBy;
+'use strict';
 
 function getValueFromParam(param, item) {
   if (typeof param.property === 'function') {
@@ -61,3 +61,7 @@ function orderBy(arr, params) {
 
   return copied.sort(createSortFn(params));
 }
+
+module.exports = orderBy;
+
+module.exports.default = module.exports;
